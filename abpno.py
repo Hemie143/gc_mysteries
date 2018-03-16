@@ -23,20 +23,68 @@ for l in koek.splitlines():
     koek_prime.append(['B' if utils.isprime(int(c)) else 'A' for c in l.split()])
 
 print('Converted to odd/even')
-koek_msg = koek_odd_even
+for koek_msg in [koek_odd_even, koek_prime]:
 
-print('Reading from left to right, horizontally')
-msg = ''.join([''.join(l) for l in koek_msg])
-print(msg)
-print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
-print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
-print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
-print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+    print('Reading from left to right, horizontally, top to bottom')
+    msg = ''.join([''.join(l) for l in koek_msg])
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
 
-print('Reading from right to left, horizontally')
-msg = ''.join([''.join(l[::-1]) for l in koek_msg])
-print(msg)
-print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
-print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
-print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
-print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+    print('Reading from right to left, horizontally, top to bottom')
+    msg = ''.join([''.join(l[::-1]) for l in koek_msg])
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+
+    print('Reading from top to bottom, vertically, right to left')
+    msg = []
+    for x in range(len(koek_msg[0]) - 1, -1, -1):
+        for y in range(len(koek_msg)):
+            msg.append(koek_msg[y][x])
+    msg = ''.join(msg)
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+
+    print('Reading from bottom to top, vertically, right to left')
+    msg = []
+    for x in range(len(koek_msg[0]) - 1, -1, -1):
+        for y in range(len(koek_msg)-1, -1, -1):
+            msg.append(koek_msg[y][x])
+    msg = ''.join(msg)
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+
+    print('Reading from top to bottom, vertically, left to right')
+    msg = []
+    for x in range(len(koek_msg[0])):
+        for y in range(len(koek_msg)):
+            msg.append(koek_msg[y][x])
+    msg = ''.join(msg)
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
+
+    print('Reading from bottom to top, vertically, left to right')
+    msg = []
+    for x in range(len(koek_msg[0])):
+        for y in range(len(koek_msg)-1, -1, -1):
+            msg.append(koek_msg[y][x])
+    msg = ''.join(msg)
+    print(msg)
+    print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
+    print('version1,   swap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=True)))
+    print('version2, noswap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=False)))
+    print('version2,   swap: {}'.format(cipher.bacon_decrypt(msg, version=2, swapAB=True)))
