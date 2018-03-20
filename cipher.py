@@ -21,6 +21,7 @@ bacon2_map_enc_bin = {'a': '00000', 'b': '00001', 'c': '00010', 'd': '00011', 'e
 
 bacon2_map_dec_bin = {val: key for key, val in bacon2_map_enc_bin.items()}
 
+
 def bacon_decrypt(text, version=1, swapAB=False):
     text = text.lower().strip()
     text = text.replace(' ', '')
@@ -45,6 +46,7 @@ def bacon_decrypt(text, version=1, swapAB=False):
                     result.append(bacon2_map_dec_bin.get(code5, '?'))
                 code = []
     return ''.join(result)
+
 
 def bacon_encrypt(text, version=1, swapAB=False):
     text = list(text.lower())
