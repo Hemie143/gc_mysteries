@@ -26,6 +26,9 @@ print('Converted to odd/even')
 for koek_msg in [koek_odd_even, koek_prime]:
 
     print('Reading from left to right, horizontally, top to bottom')
+
+    print(''.join(koek_msg))
+
     msg = ''.join([''.join(l) for l in koek_msg])
     print(msg)
     print('version1, noswap: {}'.format(cipher.bacon_decrypt(msg, version=1, swapAB=False)))
