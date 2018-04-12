@@ -13,6 +13,13 @@ test = 'maitre corbeau sur un arbre perche'
 print(cipher.bacon_encrypt(test, version=2, swapAB=False))
 '''
 
+def to_odd_even(text):
+    koek_odd_even = []
+    for l in koek.splitlines():
+        koek_odd_even.append(' '.join(['A' if int(c)%2 == 0 else 'B' for c in l.split()]))
+    return '\n'.join(koek_odd_even)
+
+
 koek_odd_even = []
 for l in koek.splitlines():
     koek_odd_even.append(['A' if int(c)%2 == 0 else 'B' for c in l.split()])
