@@ -21,7 +21,7 @@ def all_bacons(k_list):
         print(cipher.bacon_decrypt(''.join(line), version=1, swapAB=True))
     print('**Bacon 2 - No Swap**')
     for line in current_bacon:
-        print(cipher.bacon_decrypt(''.join(line), version=2, swapAB=True))
+        print(cipher.bacon_decrypt(''.join(line), version=2, swapAB=False))
     print('**Bacon 2 - Swap**')
     for line in current_bacon:
         print(cipher.bacon_decrypt(''.join(line), version=2, swapAB=True))
@@ -54,8 +54,49 @@ print('*'*80)
 print('Reading per line, from right to left')
 
 current_list = []
-
+for l in koek_list:
+    current_list.append(l[::-1])
 list_print_space(current_list)
-current_bacon  = to_odd_even(current_list)
+current_bacon = to_odd_even(current_list)
+list_print(current_bacon)
+all_bacons(current_bacon)
+
+###############################################################################
+print('*'*80)
+print('Reading per column, from right to left, top to bottom')
+
+current_list = []
+num_lines = len(koek_list)
+num_chars = len(koek_list[0])
+for y in range(num_lines):
+    line = []
+    for x in range(num_chars):
+        c = y * num_chars + x
+        yy = c % num_lines
+        xx = num_chars - (c // num_lines) - 1
+        line.append(koek_list[yy][xx])
+    current_list.append(line)
+list_print_space(current_list)
+current_bacon = to_odd_even(current_list)
+list_print(current_bacon)
+all_bacons(current_bacon)
+
+###############################################################################
+print('*'*80)
+print('Reading per column, from right to left, bottom to top')
+
+current_list = []
+num_lines = len(koek_list)
+num_chars = len(koek_list[0])
+for y in range(num_lines):
+    line = []
+    for x in range(num_chars):
+        c = y * num_chars + x
+        yy = num_lines - (c % num_lines) - 1
+        xx = num_chars - (c // num_lines) - 1
+        line.append(koek_list[yy][xx])
+    current_list.append(line)
+list_print_space(current_list)
+current_bacon = to_odd_even(current_list)
 list_print(current_bacon)
 all_bacons(current_bacon)
